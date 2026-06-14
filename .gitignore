@@ -1,0 +1,26 @@
+# Arquivos locais e temporarios
+.env
+.env.*
+!.env.example
+*.log
+.idea/
+.vscode/
+
+# Dependencias
+/vendor/
+/node_modules/
+
+# Codigo da aplicacao sera adicionado em commits posteriores
+*.php
+*.css
+*.js
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.svg
+.htaccess
+
+# Mantem a estrutura inicial de diretorios
+!.gitkeep
