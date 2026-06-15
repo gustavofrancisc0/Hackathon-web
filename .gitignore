@@ -22,5 +22,8 @@
 *.svg
 .htaccess
 
+# Evidências visuais utilizadas pela documentação
+!docs/images/*.png
+
 # Mantem a estrutura inicial de diretorios
 !.gitkeep
