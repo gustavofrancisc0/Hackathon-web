@@ -81,20 +81,23 @@ $pageTitle = 'Cadastro do Aluno';
         </div>
     </section>
 </main>
-<script src="<?= asset('js/login.js') ?>"></script>
 <script src="<?= asset('js/mascaras.js') ?>"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const confirmar = document.getElementById('reg-confirmar-senha');
-    const btnConf   = document.getElementById('btnMostrarConfirmar');
-    if (confirmar && btnConf) {
-        btnConf.addEventListener('click', function () {
-            const mostrando = confirmar.type === 'text';
-            confirmar.type = mostrando ? 'password' : 'text';
-            btnConf.setAttribute('aria-label', mostrando ? 'Mostrar confirmação de senha' : 'Ocultar confirmação de senha');
-            btnConf.classList.toggle('active', !mostrando);
+    function toggleSenha(inputId, btnId, labelMostrar, labelOcultar) {
+        const input = document.getElementById(inputId);
+        const btn   = document.getElementById(btnId);
+        if (!input || !btn) return;
+        btn.addEventListener('click', function () {
+            const mostrando = input.type === 'text';
+            input.type = mostrando ? 'password' : 'text';
+            btn.setAttribute('aria-label', mostrando ? labelMostrar : labelOcultar);
+            btn.classList.toggle('active', !mostrando);
         });
     }
+
+    toggleSenha('reg-senha',          'btnMostrarSenha',    'Mostrar senha',               'Ocultar senha');
+    toggleSenha('reg-confirmar-senha', 'btnMostrarConfirmar','Mostrar confirmação de senha','Ocultar confirmação de senha');
 });
 </script>
 </body>

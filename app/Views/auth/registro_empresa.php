@@ -30,7 +30,20 @@
             <input type="text" name="telefone" placeholder="(44) 99999-9999" value="<?= e($post['telefone'] ?? '') ?>" required data-mask="phone">
 
             <label>Senha</label>
-            <input type="password" name="senha" required>
+            <div class="password-field-fixed">
+                <input id="emp-senha" type="password" name="senha" placeholder="Criar senha" required autocomplete="new-password">
+                <button type="button" class="password-toggle" id="btnEmpSenha" aria-label="Mostrar senha">
+                    <img src="<?= icon('olho_senha.svg') ?>" alt="">
+                </button>
+            </div>
+
+            <label>Confirmar Senha</label>
+            <div class="password-field-fixed">
+                <input id="emp-confirmar-senha" type="password" name="confirmar_senha" placeholder="Confirme sua senha" required autocomplete="new-password">
+                <button type="button" class="password-toggle" id="btnEmpConfirmar" aria-label="Mostrar confirmação de senha">
+                    <img src="<?= icon('olho_senha.svg') ?>" alt="">
+                </button>
+            </div>
 
             <button type="submit" class="btn-primary full">Salvar e continuar</button>
         </form>
@@ -43,5 +56,23 @@
     </section>
 </main>
 <script src="<?= asset('js/mascaras.js') ?>"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    function toggleSenha(inputId, btnId, labelMostrar, labelOcultar) {
+        const input = document.getElementById(inputId);
+        const btn   = document.getElementById(btnId);
+        if (!input || !btn) return;
+        btn.addEventListener('click', function () {
+            const mostrando = input.type === 'text';
+            input.type = mostrando ? 'password' : 'text';
+            btn.setAttribute('aria-label', mostrando ? labelMostrar : labelOcultar);
+            btn.classList.toggle('active', !mostrando);
+        });
+    }
+
+    toggleSenha('emp-senha',          'btnEmpSenha',    'Mostrar senha',               'Ocultar senha');
+    toggleSenha('emp-confirmar-senha', 'btnEmpConfirmar','Mostrar confirmação de senha','Ocultar confirmação de senha');
+});
+</script>
 </body>
 </html>
