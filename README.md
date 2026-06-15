@@ -1,4 +1,4 @@
-# Portal de Estágios UniALFA - Front-end Web
+# Portal de Estágios UniALFA — Front-end Web
 
 Aplicação web do Portal de Estágios da UniALFA, desenvolvida em PHP Orientado a Objetos para atender alunos e empresas por meio da integração com a API Node.js.
 
@@ -241,6 +241,14 @@ Reúne arquivos públicos:
 ### `index.php`
 
 É o front controller da aplicação. Inicializa os recursos e registra as rotas públicas, do aluno, da empresa e da administração.
+
+### Princípios de design aplicados
+
+| Princípio | Aplicação |
+|---|---|
+| **Encapsulamento** | Os models encapsulam as chamadas à API e a normalização dos dados |
+| **Herança** | Os controllers herdam da classe base `Controller` |
+| **Separação de responsabilidades** | Divisão em controllers, models, views e core (padrão MVC) |
 
 ---
 
@@ -621,30 +629,3 @@ Verificação realizada em ambiente local com Apache, PHP 8.3, API Node.js e MyS
 | Atualização de status | Funcionando | Status alterado pela API e notificação gerada ao aluno |
 | Responsividade | Funcionando | Validada em 1440px, 768px, 390px e 320px |
 | Sintaxe PHP | Funcionando | 47 arquivos verificados com `php -l`, sem erros |
-
-### Ambiente da evidência
-
-| Item | Valor |
-|---|---|
-| Data da verificação | 15/06/2026 |
-| Sistema operacional | Windows |
-| Servidor web | Apache/XAMPP |
-| PHP | 8.3.30 |
-| API | `http://localhost:3000/api` |
-| URL do front | `http://localhost/nova/Hackathon-web/` |
-
----
-
-## Princípios de Design e Requisitos PHP
-
-| Requisito | Evidência no projeto |
-|---|---|
-| Classes `Aluno`, `Empresa`, `Vaga` e `Candidatura` | `app/Models` |
-| Painel restrito da empresa | `EmpresaController` e `app/Views/empresa` |
-| CRUD das próprias vagas | Rotas e métodos de criação, listagem, edição e exclusão |
-| Lista de candidatos por vaga | Tela de candidatos com filtro |
-| Portal do aluno | Vagas, detalhes, candidatura e acompanhamento |
-| Integração exclusivamente HTTP | `core/ApiClient.php` |
-| Encapsulamento | Models encapsulam chamadas e normalização dos dados |
-| Herança | Controllers herdam de `Controller` |
-| Separação de responsabilidades | Divisão em controllers, models, views e core |
